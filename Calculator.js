@@ -17,6 +17,19 @@ app.post('/result', (req, res) =>{
     res.render("result", {calResult : result});
 })
 
+app.get('/bmicalculator', (req, res) =>{
+    res.render("bmicalculator");
+});
+
+app.post('/bmicalculator', (req, res) =>{
+    const weight = parseFloat(req.body.weight);
+    const height = parseFloat(req.body.height);
+    
+    const bmi = weight / (height * height);
+
+    res.render("bmicalculator", { bmiResult : bmi });
+})
+
 app.listen(8080, () =>{
     console.log(`Server is running on port 8080`);
 });
